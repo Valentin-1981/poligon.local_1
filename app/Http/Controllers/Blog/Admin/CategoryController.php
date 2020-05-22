@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 use App\Http\Requests\BlogCategoryCreateRequest;
 
+
 class CategoryController extends BaseController
 {
     /**
@@ -80,11 +81,14 @@ class CategoryController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BlogCategoryRepository $categoryRepository, $id)
     {
 //        dd(__METHOD__);
-        $item = BlogCategory::findOrFail($id);
-        $categoryList = BlogCategory::all();
+//        $item = BlogCategory::findOrFail($id);
+//        $categoryList = BlogCategory::all();
+        $item = $categoryRepositoy->getEdit($id);
+        $categoryList = $categoryRepository->getFromComboBox();
+
         return view('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
 
