@@ -83,11 +83,11 @@ class CategoryController extends BaseController
      */
     public function edit(BlogCategoryRepository $categoryRepository, $id)
     {
-//        dd(__METHOD__);
-//        $item = BlogCategory::findOrFail($id);
-//        $categoryList = BlogCategory::all();
-        $item = $categoryRepositoy->getEdit($id);
-        $categoryList = $categoryRepository->getFromComboBox();
+        dd(__METHOD__);
+        $item = BlogCategory::findOrFail($id);
+        $categoryList = BlogCategory::all();
+        //$item = $categoryRepositoy->getEdit($id);
+        //$categoryList = $categoryRepository->getFromComboBox();
 
         return view('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
